@@ -1,8 +1,8 @@
-package org.example.tests;
+package api.tests;
 
 import io.restassured.response.Response;
-import org.example.base.BaseTest;
-import org.example.core.ApiClient;
+import api.base.BaseTest;
+import api.core.ApiClient;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

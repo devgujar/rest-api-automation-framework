@@ -1,4 +1,4 @@
-package org.example.core;
+package api.core;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -9,8 +9,8 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import org.example.auth.AuthProvider;
-import org.example.config.ConfigManager;
+import api.auth.AuthProvider;
+import api.config.ConfigManager;
 
 /**
  * Centralised builders for Request/Response specs.

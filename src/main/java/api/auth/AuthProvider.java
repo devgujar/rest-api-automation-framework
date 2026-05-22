@@ -1,8 +1,8 @@
-package org.example.auth;
+package api.auth;
 
 
 import io.restassured.specification.RequestSpecification;
-import org.example.config.ConfigManager;
+import api.config.ConfigManager;
 
 /**
  * Centralised authentication strategy applier.
