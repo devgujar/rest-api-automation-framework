@@ -12,14 +12,15 @@ ApiAutomation/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── api/
-│   │   │       ├── client/
-│   │   │       │   └── ApiClient.java
+│   │   │       ├── auth/
+│   │   │       │   └── AuthProvider.java
 │   │   │       ├── base/
 │   │   │       │   └── BaseTest.java
 │   │   │       ├── config/
 │   │   │       │   └── ConfigManager.java
 │   │   │       └── core/
-│   │   │           └── ...
+│   │   │           ├── ApiClient.java
+│   │   │           └── SpecFactory.java
 │   │   └── resources/
 │   │       └── baseConfig.properties
 │   └── test/
@@ -31,21 +32,27 @@ ApiAutomation/
 
 ## Key Components
 
-### 1. ApiClient
+### 1. ApiClient (core/ApiClient.java)
 - Central class for sending HTTP requests using RestAssured.
 - Supports all HTTP methods, headers, query parameters, and payloads.
 - Logging filters can be enabled/disabled via configuration.
 
-### 2. BaseTest
+### 2. SpecFactory (core/SpecFactory.java)
+- Provides reusable request/response specifications for RestAssured.
+
+### 3. BaseTest (base/BaseTest.java)
 - Abstract base class for all test classes.
 - Sets up the base URI before each test using `ConfigManager`.
 - Ensures consistent environment setup for all tests.
 
-### 3. ConfigManager
+### 4. ConfigManager (config/ConfigManager.java)
 - Loads configuration properties from `baseConfig.properties`.
 - Provides easy access to configuration values (e.g., base URI, logging flags).
 
-### 4. SampleApiTest
+### 5. AuthProvider (auth/AuthProvider.java)
+- Provides authentication utilities for API requests.
+
+### 6. SampleApiTest
 - Example test class demonstrating how to use the framework.
 - Extends `BaseTest` and uses `ApiClient` for API calls.
 
@@ -96,4 +103,3 @@ Assert.assertEquals(response.getStatusCode(), 200);
 ---
 
 This framework provides a clean, maintainable starting point for REST API automation in Java. You can easily extend it for more advanced scenarios, authentication, reporting, and more.
-
