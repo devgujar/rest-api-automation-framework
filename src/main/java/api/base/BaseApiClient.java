@@ -1,12 +1,13 @@
-package api.core;
+package api.base;
 
+import api.core.SpecFactory;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 import java.util.Map;
 
-public class ApiClient {
+public class BaseApiClient {
 
     // Main method supporting headers and query params
     public static Response sendRequest(String method, String path, String payload,

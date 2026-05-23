@@ -9,7 +9,6 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import api.auth.AuthProvider;
 import api.config.ConfigManager;
 
 /**

@@ -1,4 +1,4 @@
-package api.auth;
+package api.core;
 
 
 import io.restassured.specification.RequestSpecification;
