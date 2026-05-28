@@ -12,13 +12,24 @@ import io.restassured.specification.ResponseSpecification;
 import api.config.ConfigManager;
 
 /**
- * Centralised builders for Request/Response specs.
- * Headers, base URI, timeouts, auth, logging filters live here once.
+ * SpecFactory provides centralized builders for RestAssured Request and Response specifications.
+ * <p>
+ * Handles base URI, base path, content type, timeouts, authentication, and conditional logging filters.
+ * All API requests should use the request() method to ensure consistent configuration.
+ * </p>
  */
 public final class SpecFactory {
 
     private SpecFactory() {}
 
+    /**
+     * Builds and returns a configured RequestSpecification for API requests.
+     * <p>
+     * Applies base URI, base path, content type, timeouts, authentication, and logging filters (if enabled).
+     * Logging is controlled by the 'enable.logging' property in configuration.
+     * </p>
+     * @return Configured RequestSpecification
+     */
     public static RequestSpecification request() {
         int connTimeout = Integer.parseInt(ConfigManager.get("http.connect.timeout.ms", "10000"));
         int readTimeout = Integer.parseInt(ConfigManager.get("http.read.timeout.ms", "30000"));
@@ -46,6 +57,10 @@ public final class SpecFactory {
         return AuthProvider.applyAuthentication(spec);
     }
 
+    /**
+     * Returns a ResponseSpecification expecting HTTP 200 and JSON content type.
+     * @return ResponseSpecification for successful JSON responses
+     */
     public static ResponseSpecification responseOk() {
         return new ResponseSpecBuilder()
                 .expectStatusCode(200)
@@ -53,4 +68,3 @@ public final class SpecFactory {
                 .build();
     }
 }
-

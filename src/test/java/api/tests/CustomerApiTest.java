@@ -10,9 +10,25 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * CustomerApiTest contains TestNG test cases for validating Customer API endpoints.
+ * <p>
+ * Scenarios covered:
+ * <ul>
+ *   <li>Create a customer and verify duplicate creation is handled</li>
+ *   <li>Update a customer and verify changes</li>
+ *   <li>Delete a customer and handle repeated deletion</li>
+ *   <li>Validate all customers endpoint</li>
+ * </ul>
+ * </p>
+ */
 public class CustomerApiTest extends BaseTest {
     CustomerApiClient client = new CustomerApiClient();
 
+    /**
+     * Test creating a customer, verifying creation, and duplicate creation error handling.
+     * @throws Exception if payload creation fails
+     */
     @Test
     public void testCustomerCreate() throws Exception {
 
@@ -36,6 +52,11 @@ public class CustomerApiTest extends BaseTest {
         Assert.assertFalse(duplicateResponse.getStatusCode() == 201);
     }
 
+    /**
+     * Test updating a customer and verifying the update via GET.
+     * Depends on testCustomerCreate.
+     * @throws Exception if payload creation fails
+     */
     @Test(dependsOnMethods = "testCustomerCreate")
     public void testCustomerUpdate() throws Exception {
         String customerId = "1";
@@ -58,6 +79,10 @@ public class CustomerApiTest extends BaseTest {
         Assert.assertEquals(city, "Pune_Updated", "City not updated");
     }
 
+    /**
+     * Test deleting a customer and handling repeated deletion attempts.
+     * @throws Exception if payload creation fails
+     */
     @Test
     public void testDeleteMultiple() throws Exception {
         String customerId = "100";
@@ -86,6 +111,10 @@ public class CustomerApiTest extends BaseTest {
     }
 
 
+    /**
+     * Test retrieving all customers and printing the response.
+     * @throws Exception if payload creation fails
+     */
     @Test
     public void testAllCustomerResponse() throws Exception {
 
