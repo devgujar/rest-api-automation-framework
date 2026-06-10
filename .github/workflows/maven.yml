@@ -6,7 +6,8 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: rest-api-automation Tests
+name: Java CI with Maven
+
 on:
   push:
     branches: [ "main" ]
